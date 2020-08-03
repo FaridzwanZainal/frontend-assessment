@@ -1,0 +1,33 @@
+<ng-container *ngIf="post | async as item">
+  <div style="font-size: 32px; padding-top: 80px; text-align: center;">
+    User ID: {{ item.id }}
+  </div>
+  <div
+    style="background-color: yellow; max-width: 500px;"
+    class="border mx-auto"
+  >
+    <div style="padding: 8px;">User ID: {{ item.userId }}</div>
+    <div style="padding: 8px;">ID: {{ item.id }}</div>
+    <div style="padding: 8px;">Title: {{ item.title }}</div>
+    <div style="padding: 8px;">Body: {{ item.body }}</div>
+    <button (click)="viewComments(item.id)" style="width: 100%;">
+      View Comments
+    </button>
+  </div>
+
+  <ng-container *ngIf="comments | async as comment">
+    <div style="padding-top: 32px; max-width: 320px; margin: auto;">
+      Filtered by:
+      <input type="text" [(ngModel)]="input" placeholder="Serach any fields" />
+    </div>
+    <div *ngFor="let item of comment | commentsFilter: input; let i = index">
+      <div style="max-width: 1000px; margin: 24px auto;" class="border mx-auto">
+        <div style="padding: 8px;">Post ID: {{ item.postId }}</div>
+        <div style="padding: 8px;">ID: {{ item.id }}</div>
+        <div style="padding: 8px;">Name: {{ item.name }}</div>
+        <div style="padding: 8px;">Email: {{ item.email }}</div>
+        <div style="padding: 8px;">Body: {{ item.body }}</div>
+      </div>
+    </div></ng-container
+  >
+</ng-container>
