@@ -1,0 +1,45 @@
+<!-- <ng-container *ngIf="posts | async as items">
+  <div class="mx-auto">
+    <div *ngFor="let post of items" class="flex">
+      <div>
+        {{ post.id }}
+      </div>
+      <div>test</div>
+    </div>
+  </div></ng-container
+> -->
+<ng-container *ngIf="posts | async as items">
+  <!-- <table class="mx-auto" style="width: 90%; padding-top: 24px;">
+    <tr>
+      <th class="border" style="width:5%">User Id</th>
+      <th class="border" style="width:5%">Id</th>
+      <th class="border">Title</th>
+      <th class="border">Body</th>
+    </tr>
+    <tr class="border-data" *ngFor="let post of items">
+      <td style="text-align: center;">{{ post.userId }}</td>
+      <td style="text-align: center;">{{ post.id }}</td>
+      <td style="padding-left: 4px; padding-right: 4px;">{{ post.title }}</td>
+      <td style="padding-left: 4px; padding-right: 4px;">{{ post.body }}</td>
+    </tr>
+  </table> -->
+  <div class="grid mx-auto" style="max-width: 1000px; padding-top: 80px;">
+    <div *ngFor="let post of items">
+      <div
+        style="height: 100%; display: flex; flex-direction: column;"
+        class="border mx-auto"
+      >
+        <div style="padding: 8px;">User ID: {{ post.userId }}</div>
+        <div style="padding: 8px;">ID: {{ post.id }}</div>
+        <div style="padding: 8px;">Title: {{ post.title }}</div>
+        <div style="padding: 8px; margin-bottom: auto;">Body: {{ post.body }}</div>
+        <button
+          (click)="viewDetail(post.id)"
+          style="width: 100%; position: relative; bottom: 10;"
+        >
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
